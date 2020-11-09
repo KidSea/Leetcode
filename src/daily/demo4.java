@@ -1,42 +1,61 @@
 package daily;
+
+import java.util.Arrays;
+import java.util.List;
+
 /*
-给定两个单词（beginWord 和 endWord）和一个字典，找到从 beginWord 到 endWord 的最短转换序列的长度。转换需遵循如下规则：
+给你一个整数数组 arr 。请你将数组中的元素按照其二进制表示中数字 1 的数目升序排序。
 
-每次转换只能改变一个字母。
-转换过程中的中间单词必须是字典中的单词。
-说明:
+如果存在多个数字二进制中 1 的数目相同，则必须将它们按照数值大小升序排列。
 
-如果不存在这样的转换序列，返回 0。
-所有单词具有相同的长度。
-所有单词只由小写字母组成。
-字典中不存在重复的单词。
-你可以假设 beginWord 和 endWord 是非空的，且二者不相同。
-示例 1:
+请你返回排序后的数组。
 
-输入:
-beginWord = "hit",
-endWord = "cog",
-wordList = ["hot","dot","dog","lot","log","cog"]
+ 
 
-输出: 5
+示例 1：
 
-解释: 一个最短转换序列是 "hit" -> "hot" -> "dot" -> "dog" -> "cog",
-     返回它的长度 5。
-示例 2:
+输入：arr = [0,1,2,3,4,5,6,7,8]
+输出：[0,1,2,4,8,3,5,6,7]
+解释：[0] 是唯一一个有 0 个 1 的数。
+[1,2,4,8] 都有 1 个 1 。
+[3,5,6] 有 2 个 1 。
+[7] 有 3 个 1 。
+按照 1 的个数排序得到的结果数组为 [0,1,2,4,8,3,5,6,7]
+示例 2：
 
-输入:
-beginWord = "hit"
-endWord = "cog"
-wordList = ["hot","dot","dog","lot","log"]
+输入：arr = [1024,512,256,128,64,32,16,8,4,2,1]
+输出：[1,2,4,8,16,32,64,128,256,512,1024]
+解释：数组中所有整数二进制下都只有 1 个 1 ，所以你需要按照数值大小将它们排序。
+示例 3：
 
-输出: 0
+输入：arr = [10000,10000]
+输出：[10000,10000]
+示例 4：
 
-解释: endWord "cog" 不在字典中，所以无法进行转换。
+输入：arr = [2,3,5,7,11,13,17,19]
+输出：[2,3,5,17,7,11,13,19]
+示例 5：
+
+输入：arr = [10,100,1000,10000]
+输出：[10,100,10000,1000]
+ 
+
+提示：
+
+1 <= arr.length <= 500
+0 <= arr[i] <= 10^4
+
 
 来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/word-ladder
+链接：https://leetcode-cn.com/problems/sort-integers-by-the-number-of-1-bits
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
 public class demo4 {
-
+    public int[] sortByBits(int[] arr) {
+        return Arrays.stream(arr)
+                .boxed()
+                .sorted((a, b) -> (Integer.bitCount(a) == Integer.bitCount(b)
+                        ? Integer.compare(a, b) : Integer.compare(Integer.bitCount(a), Integer.bitCount(b))))
+                .mapToInt(i -> i).toArray();
+    }
 }
