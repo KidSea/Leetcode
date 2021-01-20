@@ -9,3 +9,4 @@ local.properties
 .settings
 tmp/
 .DS_Store
+out/
