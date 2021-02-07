@@ -1,9 +1,7 @@
 package daily;
 
-import sun.rmi.runtime.Log;
-
 public class demo15 {
-    private final ThreadLocal<String> threadLocal = new ThreadLocal<>();
+    private static final ThreadLocal<String> threadLocal = new ThreadLocal<>();
 
     public static void main(String[] args) {
         demo15 demo15 = new demo15();
@@ -28,6 +26,11 @@ public class demo15 {
                 System.out.println("[Thread#2]threadLocal=" + threadLocal.get());
             };
         }.start();
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         // 4
         System.out.println(Thread.currentThread().getName() + "threadLocal=" + threadLocal.get());
     }
