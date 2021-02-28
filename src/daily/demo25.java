@@ -1,5 +1,8 @@
 package daily;
 
+/**
+ * 二叉搜索树的第k小数00
+ */
 public class demo25 {
     int index = 0; //计数器
     TreeNode KthNode(TreeNode root, int k)
