@@ -12,7 +12,7 @@ public class demo23 {
         int p2 = 0;
         int p3 = 0;
         int p5 = 0;
-        for (int i = 1;i <= index;i++) {
+        for (int i = 1;i < index;i++) {
             uglys[i] = Math.min(uglys[p2]*2, Math.min(uglys[p3]*3, uglys[p5]*5));
             if(uglys[i] == uglys[p2]*2)p2++;//为了防止重复需要三个if都能够走到
             if(uglys[i] == uglys[p3]*3)p3++;//为了防止重复需要三个if都能够走到
